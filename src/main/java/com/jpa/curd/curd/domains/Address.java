@@ -3,8 +3,8 @@ package com.jpa.curd.curd.domains;
 import javax.persistence.*;
 
 @Entity
-@Table(name = "address")
-public class Address {
+@Table(name = "addresses")
+public class Address extends Audit{
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
@@ -12,6 +12,10 @@ public class Address {
     private String street;
     private String zipCode;
     private String country;
+
+    @OneToOne(fetch = FetchType.LAZY, optional = false)
+    @JoinColumn(name = "user_id", nullable = false)
+    private User user;
 
     public long getId() {
         return id;
@@ -51,5 +55,13 @@ public class Address {
 
     public void setCountry(String country) {
         this.country = country;
+    }
+
+    public User getUser() {
+        return user;
+    }
+
+    public void setUser(User user) {
+        this.user = user;
     }
 }

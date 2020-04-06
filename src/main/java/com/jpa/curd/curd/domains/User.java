@@ -12,6 +12,9 @@ public class User extends Audit{
     private String email;
     private String passowrd;
 
+    @OneToOne(mappedBy = "user", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+
+    private Address address;
     public long getId() {
         return id;
     }
@@ -42,5 +45,13 @@ public class User extends Audit{
 
     public void setPassowrd(String passowrd) {
         this.passowrd = passowrd;
+    }
+
+    public Address getAddress() {
+        return address;
+    }
+
+    public void setAddress(Address address) {
+        this.address = address;
     }
 }
