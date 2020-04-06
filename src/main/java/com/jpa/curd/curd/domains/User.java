@@ -10,7 +10,7 @@ public class User extends Audit{
     private long id;
     private String name;
     private String email;
-    private String passowrd;
+    private String password;
 
     @OneToOne(mappedBy = "user", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
 
@@ -39,12 +39,12 @@ public class User extends Audit{
         this.email = email;
     }
 
-    public String getPassowrd() {
-        return passowrd;
+    public String getPassword() {
+        return password;
     }
 
-    public void setPassowrd(String passowrd) {
-        this.passowrd = passowrd;
+    public void setPassword(String password) {
+        this.password = password;
     }
 
     public Address getAddress() {
