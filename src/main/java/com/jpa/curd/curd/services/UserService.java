@@ -17,4 +17,8 @@ public class UserService {
         return userRepository.findAll(pageable);
     }
 
+    public User saveUser(User user){
+        return userRepository.save(user);
+    }
+
 }
