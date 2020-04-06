@@ -52,6 +52,7 @@ public class User extends Audit{
     }
 
     public void setAddress(Address address) {
+        address.setUser(this);
         this.address = address;
     }
 }
