@@ -15,13 +15,19 @@ import javax.validation.Valid;
 public class UserController {
     @Autowired
     UserService userService;
+
     @GetMapping
-    public Page<User> getAllUser(Pageable pageable){
-       return userService.getAllUser(pageable);
+    public Page<User> getAllUser(Pageable pageable) {
+        return userService.getAllUser(pageable);
     }
 
     @PostMapping
-    public User saveUser(@Valid @RequestBody User user){
-        return  userService.saveUser(user);
+    public User saveUser(@Valid @RequestBody User user) {
+        return userService.saveUser(user);
+    }
+
+    @PutMapping("/{userId}")
+    public User updateUser(@PathVariable Long userId, @Valid @RequestBody User user) {
+        return userService.updateUser(userId, user);
     }
 }
