@@ -6,6 +6,7 @@ import com.jpa.curd.curd.repositories.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
@@ -40,7 +41,7 @@ public class UserService {
     public ResponseEntity<?> deleteUser(Long userId) {
         return userRepository.findById(userId).map(user -> {
             userRepository.delete(user);
-            return ResponseEntity.ok().build();
+             return new ResponseEntity("Data deleted successfully", HttpStatus.ACCEPTED);
         }).orElseThrow(() -> new ApplicationRunTimeException("user Id " + userId + " Not Found!"));
     }
 
