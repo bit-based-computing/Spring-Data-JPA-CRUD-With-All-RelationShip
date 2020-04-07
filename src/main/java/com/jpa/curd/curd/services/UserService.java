@@ -28,7 +28,7 @@ public class UserService {
                 user.setEmail(updatedUser.getEmail());
                 user.setPassword(updatedUser.getPassword());
                 return userRepository.save(user);
-        }).orElseThrow(()->new ApplicationRunTimeException("userId " + userId +" Not Found"));
+        }).orElseThrow(()->new ApplicationRunTimeException("user Id " + userId +" Not Found"));
     }
 
 }
