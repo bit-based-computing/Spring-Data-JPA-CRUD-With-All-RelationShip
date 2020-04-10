@@ -1,6 +1,8 @@
 package com.jpa.curd.curd.domains;
 
 import javax.persistence.*;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
 
 @Entity
 @Table(name = "users")
@@ -8,8 +10,17 @@ public class User extends Audit{
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
+
+    @NotNull
+    @Size(max = 100, min = 2)
     private String name;
+
+    @NotNull
+    @Column(unique = true)
     private String email;
+
+    @NotNull
+    @Size(min = 6)
     private String password;
 
     @OneToOne(mappedBy = "user", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
