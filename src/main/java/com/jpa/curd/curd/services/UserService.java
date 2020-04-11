@@ -34,6 +34,7 @@ public class UserService {
             user.setName(updatedUser.getName());
             user.setEmail(updatedUser.getEmail());
             user.setPassword(updatedUser.getPassword());
+            user.setAddress(updatedUser.getAddress());
             return userRepository.save(user);
         }).orElseThrow(() -> new ApplicationRunTimeException("user Id " + userId + " Not Found!"));
     }
